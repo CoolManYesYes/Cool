@@ -33,7 +33,7 @@ local WallComboWOWOWW = Window:MakeTab({
 	PremiumOnly = false
 })
 local WallComboSection = WallComboWOWOWW:AddSection({
-	Name = "Made By CoolManYesYes6 on discord!"
+	Name = "Made By CoolManYesYes6 on yt!"
 })
 local M1Tab = Window:MakeTab({
 	Name = "M1s",
@@ -41,7 +41,7 @@ local M1Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local M1Section = M1Tab:AddSection({
-	Name = "Made By CoolManYesYes6 on discord!"
+	Name = "Made By CoolManYesYes6 on yt!"
 })
 local MiscTab = Window:MakeTab({
 	Name = "Misc",
@@ -54,13 +54,13 @@ local FunTab = Window:MakeTab({
 	PremiumOnly = false
 })
 local MiscSection = MiscTab:AddSection({
-	Name = "Made By CoolManYesYes6 on discord!"
+	Name = "Made By CoolManYesYes6 on yt!"
 })
 local UltimateSection = UltimateMovesReal:AddSection({
-	Name = "Made By CoolManYesYes6 on discord!"
+	Name = "Made By CoolManYesYes6 on yt!"
 })
 local AnimSection = FunTab:AddSection({
-	Name = "Made By CoolManYesYes6 on discord!"
+	Name = "Made By CoolManYesYes6 on yt!"
 })
 BaseMovesReal:AddButton({
 	Name = "Ravage",
