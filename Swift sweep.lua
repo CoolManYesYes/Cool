@@ -1,115 +1,53 @@
-local ToolName = "swift sweep"
-local function Script()
-local sound = Instance.new("Sound")
-sound.SoundId = "rbxassetid://16944636115"
-sound.Volume = 10
-sound.Looped = false
 local player = game.Players.LocalPlayer
-sound.Parent = player.Character or player.CharacterAdded:Wait()
-sound:Play()
-
-local ClientAnimation = 16944265635
-local StartTime = 0 
-local Speed = 1 
-local Duration = 8
-
-local p = game.Players.LocalPlayer
-local Humanoid = p.Character:WaitForChild("Humanoid")
-local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://" .. ClientAnimation
-local Anim = Humanoid:LoadAnimation(AnimAnim)
-AnimAnim.AnimationId = "rbxassetid://0"
-Anim:Play()
-Anim.TimePosition = StartTime
-Anim:AdjustSpeed(Speed)
-delay(Duration, function() 
-Anim:Stop()
+repeat wait() until player.Character.Humanoid
+local humanoid = player.Character.Humanoid
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local UserInputService = game:GetService("UserInputService")
+debounce = false -- Activate debounce
+local anim = Instance.new("Animation")
+anim.AnimationId = "rbxassetid://16944345619"
+local playAnim = humanoid:LoadAnimation(anim)
+anim.AnimationId = "rbxassetid://0"
+spawn(function()
+wait(0.1)
+debounce = true
 end)
+playAnim:Play()
+playAnim:AdjustSpeed(1)
 
-wait(0.5)
+local Players = game:GetService("Players")
+local Character = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
 
-local sound = Instance.new("Sound")
-sound.SoundId = "rbxassetid://16944654440"
-sound.Volume = 10
-sound.Looped = false
-local player = game.Players.LocalPlayer
-sound.Parent = player.Character or player.CharacterAdded:Wait()
-sound:Play()
+local animationPlayed = false -- Flag to track if the animation has already been played
 
-local ClientAnimation = 16944345619
-local StartTime = 0 
-local Speed = 1 
-local Duration = 8
-
-local p = game.Players.LocalPlayer
-local Humanoid = p.Character:WaitForChild("Humanoid")
-local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://" .. ClientAnimation
-local Anim = Humanoid:LoadAnimation(AnimAnim)
-AnimAnim.AnimationId = "rbxassetid://0"
-Anim:Play()
-Anim.TimePosition = StartTime
-Anim:AdjustSpeed(Speed)
-delay(Duration, function() 
-Anim:Stop()
-end)
-end
-
-
-local fg = false
-local t = Instance.new("Tool")
-t.Name = ToolName
-t.RequiresHandle = false -- like holding an object only if you put a part named "Handle" but it's going to be client
-t.CanBeDropped = false
-t.Parent = game.Players.LocalPlayer.Backpack
-t.Activated:Connect(function() -- instead of Activated you can do Equipped or Unequipped
-if not fg then
-fg = true
-Script()
-fg = false
-end
-end)
-
-local ToolName = "Coritacal ruin"
-local function Script()
-local sound = Instance.new("Sound")
-sound.SoundId = "rbxassetid://17325303798"
-sound.Volume = 10
-sound.Looped = false
-local player = game.Players.LocalPlayer
-sound.Parent = player.Character or player.CharacterAdded:Wait()
-sound:Play()
-
-local ClientAnimation = 17325254223
-local StartTime = 0 
-local Speed = 1 
-local Duration = 8
-
-local p = game.Players.LocalPlayer
-local Humanoid = p.Character:WaitForChild("Humanoid")
-local AnimAnim = Instance.new("Animation")
-AnimAnim.AnimationId = "rbxassetid://" .. ClientAnimation
-local Anim = Humanoid:LoadAnimation(AnimAnim)
-AnimAnim.AnimationId = "rbxassetid://0"
-Anim:Play()
-Anim.TimePosition = StartTime
-Anim:AdjustSpeed(Speed)
-delay(Duration, function() 
-Anim:Stop()
-end)
-end
-
-
-local fg = false
-local t = Instance.new("Tool")
-t.Name = ToolName
-t.RequiresHandle = false -- like holding an object only if you put a part named "Handle" but it's going to be client
-t.CanBeDropped = false
-t.Parent = game.Players.LocalPlayer.Backpack
-t.Activated:Connect(function() -- instead of Activated you can do Equipped or Unequipped
-if not fg then
-fg = true
-Script()
-fg = false
-end
+game.Workspace.Live["Weakest Dummy"].HumanoidRootPart.Touched:Connect(function(hit)
+    if hit.Parent == Character and not debounce and not animationPlayed then
+        animationPlayed = true -- Mark the animation as played
+        character.Humanoid.WalkSpeed = 0
+        character.Humanoid.AutoRotate = false 
+        character:WaitForChild("HumanoidRootPart").CFrame = game.Workspace.Live["Weakest Dummy"].HumanoidRootPart.CFrame * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.pi, 0)
+        -- Play second animation
+        local dummyHumanoid = game.Workspace.Live["Weakest Dummy"]:WaitForChild("Humanoid")
+        local animator = dummyHumanoid:WaitForChild("Animator")
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://10471478869"
+        local AnimationTrack = animator:LoadAnimation(Anim)
+        AnimationTrack:Play()
+        wait(1)
+local pchar= game.Workspace.Live:FindFirstChild("Weakest Dummy")
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local Workspace = game:GetService("Workspace")
+    
+    wait(0.1)
+    -- Wait for the player to load
+    local pchar= game.Workspace.Live:FindFirstChild("Weakest Dummy")
+    local player = game.Players.LocalPlayer or player.CharacterAdded:Wait()
+    local rootPart = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+    local LeftArm = game.Players.LocalPlayer.Character:WaitForChild("Left Arm")  -- Assuming Torso exists in your character model
+    
+        wait(2) -- Wait before resetting debounce
+        debounce = false -- Reset debounce
+        character.Humanoid.WalkSpeed = 16
+    character.Humanoid.AutoRotate = true 
+    end
 end)
