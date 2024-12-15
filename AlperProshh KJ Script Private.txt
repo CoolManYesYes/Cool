@@ -1,12 +1,12 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AlperPro/shhh/main/oriontestsreal')))()
-local Window = OrionLib:MakeWindow({Name = "KJ Script, Made By lloydgarmadon43 in discord!", HidePremium = false, SaveConfig = true, ConfigFolder = "lloydgarmadon43scripts"})
+local Window = OrionLib:MakeWindow({Name = "Made By CoolManYesYes6 on yt!", HidePremium = false, SaveConfig = true, ConfigFolder = "lloydgarmadon43scripts"})
 local BaseMovesReal = Window:MakeTab({
 	Name = "Base Moves",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local BaseSection = BaseMovesReal:AddSection({
-	Name = "Will Be Added Soon!"
+	Name = "base moves by CoolManYesYes6!"
 })
 
 local UltimateMovesReal = Window:MakeTab({
@@ -25,7 +25,7 @@ local VillainTab = Window:MakeTab({
 	PremiumOnly = false
 })
 local VillainSection = VillainTab:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By coolManYesYes6 on yt"
 })
 local WallComboWOWOWW = Window:MakeTab({
 	Name = "Wall Combo",
@@ -33,7 +33,7 @@ local WallComboWOWOWW = Window:MakeTab({
 	PremiumOnly = false
 })
 local WallComboSection = WallComboWOWOWW:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By CoolManYesYes6 on discord!"
 })
 local M1Tab = Window:MakeTab({
 	Name = "M1s",
@@ -41,7 +41,7 @@ local M1Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 local M1Section = M1Tab:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By CoolManYesYes6 on discord!"
 })
 local MiscTab = Window:MakeTab({
 	Name = "Misc",
@@ -54,13 +54,13 @@ local FunTab = Window:MakeTab({
 	PremiumOnly = false
 })
 local MiscSection = MiscTab:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By CoolManYesYes6 on discord!"
 })
 local UltimateSection = UltimateMovesReal:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By CoolManYesYes6 on discord!"
 })
 local AnimSection = FunTab:AddSection({
-	Name = "Made By lloydgarmadon43 on discord!"
+	Name = "Made By CoolManYesYes6 on discord!"
 })
 BaseMovesReal:AddButton({
 	Name = "Ravage",
