@@ -12822,6 +12822,6 @@ task.spawn(function()
 	Logo:Destroy()
 	Credits:Destroy()
 	IntroBackground:Destroy()
-	minimizeHolder()
-	if IsOnMobile then notify("Unstable Device", "On mobile, Infinite Yield may have issues or features that are not functioning correctly.") end
+	minimizeHolder()p
+	if IsOnMobile then notify("Unstable Device", "On mobile, ScareCrowYield may have issues or features that are not functioning correctly.") end
 end)
