@@ -321,6 +321,11 @@ InfiniteYield:AddCommand("reset", function()
 end)
 
 InfiniteYield:AddCommand("help", function()
+
+local Message = "Check your console by doing /console in chat"
+
+game:GetService("Chat"):Chat(game.Players.LocalPlayer.Character, Message)
+        
     print("commands are:")
 print("fly: Makes the player fly.")
 print("teleport <x, y, z>: Teleports the player to the given coordinates.")
