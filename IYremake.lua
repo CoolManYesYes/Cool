@@ -466,3 +466,18 @@ Material = "Neon"
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/Universal", true))()
 end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local function isMobile()
+    return game:GetService("UserInputService").TouchEnabled
+end
+
+if isMobile() then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "unstable device",
+        Text = "Some commands won't work such as fly",
+        Duration = 3
+    })
+end
