@@ -470,7 +470,41 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/
 end)
 
 InfiniteYield:AddCommand("god", function()
-    
+    local function enableGodMode()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    local function nullifyKillbricks()
+        local function disableKillbrick(part)
+            if part:IsA("BasePart") and part.Touched then
+                part.Touched:Connect(function(hit)
+                    if hit.Parent == character then
+                        part.Touched:Disconnect()
+                    end
+                end)
+            end
+        end
+
+        while true do
+            for _, part in pairs(workspace:GetDescendants()) do
+                disableKillbrick(part)
+            end
+            wait(1)
+        end
+    end
+
+    coroutine.wrap(nullifyKillbricks)()
+
+    while true do
+        wait(0.1)
+        if character and character:FindFirstChild("Humanoid") then
+            character.Humanoid.Health = math.huge
+        end
+    end
+end
+
+enableGodMode()
+        
 end)
 
 InfiniteYield:AddCommand("naked", function(user)
