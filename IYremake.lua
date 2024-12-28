@@ -470,31 +470,31 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/
 end)
 
 InfiniteYield:AddCommand("god", function()
-    local function enableGodMode()
+    
+  local function enableGodMode()
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
 
-    local function nullifyKillbricks()
-        local function disableKillbrick(part)
-            if part:IsA("BasePart") and part.Touched then
-                part.Touched:Connect(function(hit)
-                    if hit.Parent == character then
-                        part.Touched:Disconnect()
-                    end
-                end)
+    local function disableKillbrick(part)
+        if part:IsA("BasePart") then
+            for _, connection in ipairs(getconnections(part.Touched)) do
+                connection:Disable()
             end
         end
+    end
 
-        
-            for _, part in pairs(workspace:GetDescendants()) do
-                disableKillbrick(part)
-             end
+    local function nullifyKillbricks()
+        for _, part in pairs(workspace:GetDescendants()) do
+            disableKillbrick(part)
         end
+
+        workspace.DescendantAdded:Connect(disableKillbrick)
     end
 
     coroutine.wrap(nullifyKillbricks)()
 
-    
+    while true do
+        wait(0.1)
         if character and character:FindFirstChild("Humanoid") then
             character.Humanoid.Health = math.huge
         end
