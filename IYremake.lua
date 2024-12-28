@@ -359,6 +359,7 @@ print("FreezeAnims -- freezes the anims")
 print("unfreezeAnims -- unfreezes anims")
 print("console -- shows Roblox console")
 print("hitbox -- expands everyones hitbox")
+print("god -- enables godmode")
 end)
 
 InfiniteYield:AddCommand("sit", function()
@@ -465,6 +466,34 @@ Material = "Neon"
 }
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/Universal", true))()
+end)
+
+InfiniteYield:AddCommand("god", function()
+    local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+local function stopAllScripts(parent)
+    for _, obj in ipairs(parent:GetDescendants()) do
+        if obj:IsA("Script") or obj:IsA("LocalScript") or obj:IsA("ModuleScript") then
+            obj.Disabled = true
+        end
+    end
+end
+
+local function disableKillBricks()
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj:IsA("Part") and obj.Touched then
+            local connections = getconnections(obj.Touched)
+            for _, connection in ipairs(connections) do
+                connection:Disable()
+            end
+        end
+    end
+end
+
+stopAllScripts(character)
+stopAllScripts(game)
+disableKillBricks()
 end)
 
 local Players = game:GetService("Players")
