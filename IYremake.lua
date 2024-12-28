@@ -485,11 +485,10 @@ InfiniteYield:AddCommand("god", function()
             end
         end
 
-        while true do
+        
             for _, part in pairs(workspace:GetDescendants()) do
                 disableKillbrick(part)
-            end
-            wait(1)
+             end
         end
     end
 
