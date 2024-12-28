@@ -470,31 +470,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/
 end)
 
 InfiniteYield:AddCommand("god", function()
-    local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
-local function stopAllScripts(parent)
-    for _, obj in ipairs(parent:GetDescendants()) do
-        if obj:IsA("Script") or obj:IsA("LocalScript") or obj:IsA("ModuleScript") then
-            obj.Disabled = true
-        end
-    end
-end
-
-local function disableKillBricks()
-    for _, obj in ipairs(workspace:GetDescendants()) do
-        if obj:IsA("Part") and obj.Touched then
-            local connections = getconnections(obj.Touched)
-            for _, connection in ipairs(connections) do
-                connection:Disable()
-            end
-        end
-    end
-end
-
-stopAllScripts(character)
-stopAllScripts(game)
-disableKillBricks()
+    
 end)
 
 InfiniteYield:AddCommand("naked", function(user)
