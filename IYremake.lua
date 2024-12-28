@@ -360,6 +360,7 @@ print("unfreezeAnims -- unfreezes anims")
 print("console -- shows Roblox console")
 print("hitbox -- expands everyones hitbox")
 print("god -- enables godmode")
+print("naked <user> -- makes the user naked else it makes the local player naked")
 end)
 
 InfiniteYield:AddCommand("sit", function()
@@ -494,6 +495,32 @@ end
 stopAllScripts(character)
 stopAllScripts(game)
 disableKillBricks()
+end)
+
+InfiniteYield:AddCommand("naked", function(user)
+    local Players = game:GetService("Players")
+    local localPlayer = Players.LocalPlayer
+
+    local function makeNaked(player)
+        if player and player.Character then
+            for _, v in pairs(player.Character:GetChildren()) do
+                if v:IsA("Accessory") or v:IsA("Clothing") then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+
+    if user then
+        local targetPlayer = Players:FindFirstChild(user)
+        if targetPlayer then
+            makeNaked(targetPlayer)
+        else
+            warn("User not found.")
+        end
+    else
+        makeNaked(localPlayer)
+    end
 end)
 
 local Players = game:GetService("Players")
