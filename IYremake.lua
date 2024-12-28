@@ -1,4 +1,4 @@
-local player = game.Players.LocalPlayer
+plocal player = game.Players.LocalPlayer
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "AdminGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -470,38 +470,33 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/D0LLYNHO/Hitbox/main/
 end)
 
 InfiniteYield:AddCommand("god", function()
-    
-  local function enableGodMode()
-    local player = game.Players.LocalPlayer
-    local character = player.Character or player.CharacterAdded:Wait()
+ local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 
-    local function disableKillbrick(part)
-        if part:IsA("BasePart") then
-            for _, connection in ipairs(getconnections(part.Touched)) do
-                connection:Disable()
-            end
-        end
-    end
-
-    local function nullifyKillbricks()
-        for _, part in pairs(workspace:GetDescendants()) do
-            disableKillbrick(part)
-        end
-
-        workspace.DescendantAdded:Connect(disableKillbrick)
-    end
-
-    coroutine.wrap(nullifyKillbricks)()
-
-    while true do
-        wait(0.1)
-        if character and character:FindFirstChild("Humanoid") then
-            character.Humanoid.Health = math.huge
+local function stopAllScripts(parent)
+    for _, obj in ipairs(parent:GetDescendants()) do
+        if obj:IsA("Script") or obj:IsA("LocalScript") or obj:IsA("ModuleScript") then
+            obj.Disabled = true
         end
     end
 end
 
-enableGodMode()
+local function disableKillBricks()
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj:IsA("Part") and obj.Touched then
+            local connections = getconnections(obj.Touched)
+            for _, connection in ipairs(connections) do
+                connection:Disable()
+            end
+        end
+    end
+end
+
+stopAllScripts(character)
+stopAllScripts(game)
+disableKillBricks()
+        
+  
         
 end)
 
