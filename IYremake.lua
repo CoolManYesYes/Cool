@@ -494,8 +494,7 @@ InfiniteYield:AddCommand("god", function()
 
     coroutine.wrap(nullifyKillbricks)()
 
-    while true do
-        wait(0.1)
+    
         if character and character:FindFirstChild("Humanoid") then
             character.Humanoid.Health = math.huge
         end
