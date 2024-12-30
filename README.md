@@ -15,12 +15,13 @@ This Lua script is creating a user interface (UI) library for a Roblox script us
 
    ```lua
    local Window = Library:CreateWindow({
-       Title = 'Example menu',
-       Center = true,
-       AutoShow = true,
-       TabPadding = 8,
-       MenuFadeTime = 0.2
-   })
+    Title = 'Your Window Title',
+    Center = true,  -- Centers the window on the screen
+    AutoShow = true,
+    Position = UDim2.new(0.5, -200, 0.5, -150),  -- Adjusts the position (X, Y)
+    Size = UDim2.new(0, 400, 0, 300),  -- Sets the size (Width, Height)
+    Draggable = true  -- Enables dragging
+})
    ```
 
 3. **Tab Creation**:
