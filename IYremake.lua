@@ -361,6 +361,8 @@ print("console -- shows Roblox console")
 print("hitbox -- expands everyones hitbox")
 print("god -- enables godmode")
 print("naked <user> -- makes the user naked else it makes the local player naked")
+print("shiftlock -- gives a shiftlock button")
+print("addCommand <name> <function> -- adds a command")
 end)
 
 InfiniteYield:AddCommand("sit", function()
@@ -528,6 +530,12 @@ end)
 
 InfiniteYield:AddCommand("shiftlock", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/prosadaf/Example/refs/heads/main/Video"))()
+end)
+
+InfiniteYield:AddCommand("addCommand", function(name, func)
+    InfiniteYield:AddCommand(name, function()
+        loadstring(func)()
+    end)
 end)
 
 local Players = game:GetService("Players")
