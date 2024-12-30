@@ -1,4 +1,4 @@
-plocal player = game.Players.LocalPlayer
+local player = game.Players.LocalPlayer
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "AdminGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
