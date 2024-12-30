@@ -2,7 +2,7 @@
 
 1. **Library Loading:**
    ```lua
-   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/cat"))()
+   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/CoolManYesYes/Cool/refs/heads/main/cat.txt"))()
    ```
    - This line loads and executes a script from a URL, specifically from a GitHub repository. The `loadstring` function dynamically loads a Lua script and the `game:HttpGet()` method fetches the content from the provided URL. The result of the script is stored in the `Library` variable.
 
