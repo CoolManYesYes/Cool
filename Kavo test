@@ -1,3 +1,18 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local square = Instance.new("Frame")
+square.Size = UDim2.new(0.1, 0, 0.1, 0)
+square.Position = UDim2.new(0, 0, 0.5, -50)
+square.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+square.Parent = screenGui
+
+local function onSquareClick()
+Library:ToggleUI()
+end
+
+square.MouseButton1Click:Connect(onSquareClick)
+
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
