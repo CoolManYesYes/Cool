@@ -1,168 +1,87 @@
-This Lua script is creating a user interface (UI) library for a Roblox script using `LinoriaLib` and its various features. It provides a comprehensive example of how to create and manipulate UI elements like buttons, toggles, sliders, textboxes, and more, along with managing themes and saving configurations. Here's a breakdown of what each section does:
+# Cattoware
 
-1. **Library Initialization**:
-   - The script fetches external Lua files (`Library.lua`, `ThemeManager.lua`, `SaveManager.lua`) from a GitHub repository and loads them into the script.
-
+1. **Library Loading:**
    ```lua
-   local repo = 'https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/'
-   local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
-   local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
-   local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/cat"))()
    ```
+   - This line loads and executes a script from a URL, specifically from a GitHub repository. The `loadstring` function dynamically loads a Lua script and the `game:HttpGet()` method fetches the content from the provided URL. The result of the script is stored in the `Library` variable.
 
-2. **Window Creation**:
-   - A window titled "Example menu" is created with the UI centered and set to show automatically when initialized.
-
+2. **Window Creation:**
    ```lua
-   local Window = Library:CreateWindow({
-    Title = 'Your Window Title',
-    Center = true,  -- Centers the window on the screen
-    AutoShow = true,
-    Position = UDim2.new(0.5, -200, 0.5, -150),  -- Adjusts the position (X, Y)
-    Size = UDim2.new(0, 400, 0, 300),  -- Sets the size (Width, Height)
-    Draggable = true  -- Enables dragging
-})
+   local Window = Library:CreateWindow("cattoware UI Doc", Vector2.new(500, 400), Enum.KeyCode.RightControl)
    ```
+   - This line creates a new window using the `Library` object. The window is titled `"cattoware UI Doc"`, has a size of `500x400` pixels, and is triggered by pressing the `RightControl` key.
 
-3. **Tab Creation**:
-   - Two tabs, "Main" and "UI Settings", are added to the window.
-
+3. **Tab Creation:**
    ```lua
-   local Tabs = {
-       Main = Window:AddTab('Main'),
-       ['UI Settings'] = Window:AddTab('UI Settings'),
-   }
+   local AimingTab = Window:CreateTab("Tab 1")
    ```
+   - This creates a new tab within the window named `"Tab 1"`, which can hold different UI elements.
 
-4. **Groupboxes**:
-   - A groupbox is added to the "Main" tab, which can contain UI elements like toggles, sliders, buttons, etc.
-
+4. **Section Creation:**
    ```lua
-   local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+   local testSection = AimingTab:CreateSector("First Section", "left")
    ```
+   - This creates a section called `"First Section"` within the `AimingTab`. It positions the section to the left side of the tab.
 
-5. **Toggle Creation**:
-   - A toggle named "MyToggle" is added to the groupbox, which has a callback that prints the toggle state when changed.
-
+5. **Toggle Button:**
    ```lua
-   LeftGroupBox:AddToggle('MyToggle', {
-       Text = 'This is a toggle',
-       Default = true,
-       Tooltip = 'This is a tooltip',
-       Callback = function(Value)
-           print('[cb] MyToggle changed to:', Value)
-       end
-   })
+   testSection:AddToggle("Toggle", false, function(first)
+       print("ejejejejejeje")
+   end)
    ```
+   - Adds a toggle button to the `testSection` with the label `"Toggle"`. It starts as `false` (off) by default. When toggled, the function prints `"ejejejejejeje"`.
 
-6. **Button Creation**:
-   - A button named "Button" is added, and clicking it triggers a print statement.
-
+6. **Button:**
    ```lua
-   local MyButton = LeftGroupBox:AddButton({
-       Text = 'Button',
-       Func = function()
-           print('You clicked a button!')
-       end,
-       Tooltip = 'This is the main button'
-   })
+   testSection:AddButton("Button", function(IhateGayPeople)
+       print("button")
+   end)
    ```
+   - Adds a button to the section. When clicked, it prints `"button"` in the output.
 
-7. **Slider Creation**:
-   - A slider is created with customizable options like default value, minimum, maximum, and callback function when the value changes.
-
+7. **Slider:**
    ```lua
-   LeftGroupBox:AddSlider('MySlider', {
-       Text = 'This is my slider!',
-       Default = 0,
-       Min = 0,
-       Max = 5,
-       Rounding = 1,
-       Callback = function(Value)
-           print('[cb] MySlider was changed! New value:', Value)
-       end
-   })
+   testSection:AddSlider("Slider", 0, 120, 2000, 1, function(State)
+   end)
    ```
+   - Adds a slider labeled `"Slider"`. The slider ranges from `0` to `120` with a step value of `1` and an initial value of `2000`. The function is left empty and will run whenever the slider is moved.
 
-8. **Textbox Input**:
-   - A textbox is created with a callback that triggers when the text is updated.
-
+8. **Textbox:**
    ```lua
-   LeftGroupBox:AddInput('MyTextbox', {
-       Default = 'My textbox!',
-       Numeric = false,
-       Callback = function(Value)
-           print('[cb] Text updated. New text:', Value)
-       end
-   })
+   testSection:AddTextbox("textbox", nil, function(State)
+   end)
    ```
+   - Adds a textbox where users can input text. The `nil` means there is no default value set for the textbox.
 
-9. **Dropdown Creation**:
-   - A dropdown menu is created with predefined options and a callback when the selection changes.
-
+9. **Dropdown:**
    ```lua
-   LeftGroupBox:AddDropdown('MyDropdown', {
-       Values = { 'This', 'is', 'a', 'dropdown' },
-       Default = 1,
-       Callback = function(Value)
-           print('[cb] Dropdown got changed. New value:', Value)
-       end
-   })
+   testSection:AddDropdown("Dropdown", {"here", "here", "here", "here"}, "here", true, function(dropdown)
+   end)
    ```
+   - Adds a dropdown menu with predefined options (`"here", "here", "here", "here"`) and sets `"here"` as the default selected value. The `true` enables multi-selection, and the function is triggered when the dropdown value changes.
 
-10. **Color Picker**:
-    - A color picker is added with the ability to change and track colors.
-
+10. **Color Picker with Toggle:**
     ```lua
-    LeftGroupBox:AddLabel('Color'):AddColorPicker('ColorPicker', {
-        Default = Color3.new(0, 1, 0),
-        Callback = function(Value)
-            print('[cb] Color changed!', Value)
-        end
-    })
-    ```
-
-11. **Keybind Picker**:
-    - A keybind picker allows users to select a key to trigger specific actions.
-
-    ```lua
-    LeftGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
-        Default = 'MB2',
-        Callback = function(Value)
-            print('[cb] Keybind clicked!', Value)
-        end
-    })
-    ```
-
-12. **Watermark**:
-    - The watermark is updated dynamically to show FPS and ping information.
-
-    ```lua
-    local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
-        -- FPS and ping calculations
-        Library:SetWatermark(('LinoriaLib demo | %s fps | %s ms'):format(math.floor(FPS), math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())))
+    local ColorToggle = testSection:AddToggle("ColorPicker w/Toggle", false, function(e)
+    end)
+    ColorToggle:AddColorpicker(Color3.fromRGB(75, 0,130), function(ztx)
     end)
     ```
+    - Adds a toggle button named `"ColorPicker w/Toggle"`. When toggled on, a color picker is shown with an initial color (`Color3.fromRGB(75, 0, 130)`), which lets the user pick a color. The selected color is handled by the `ColorPicker` function.
 
-13. **SaveManager and ThemeManager**:
-    - These are used for saving configurations and managing themes.
-
+11. **Keybind with Toggle:**
     ```lua
-    ThemeManager:SetLibrary(Library)
-    SaveManager:SetLibrary(Library)
-    ```
-
-    The configuration is handled by `SaveManager`, and themes are applied via `ThemeManager`.
-
-14. **Unload Function**:
-    - The library has an unload function, which disconnects the watermark update and sets `Library.Unloaded` to true.
-
-    ```lua
-    Library:OnUnload(function()
-        WatermarkConnection:Disconnect()
-        print('Unloaded!')
-        Library.Unloaded = true
+    local ToggleBind = testSection:AddToggle("Keybind w/Toggle", false, function(e)
     end)
+    ToggleBind:AddKeybind()
     ```
+    - Adds a toggle button named `"Keybind w/Toggle"`. When toggled, it allows the user to set a keybind. The `AddKeybind()` function allows users to assign a key for the toggle action.
 
-This script demonstrates how to use the `LinoriaLib` to create a complex and interactive UI in Roblox, with support for toggles, buttons, sliders, keybinds, dropdowns, themes, and configurations.
+12. **Config System:**
+    ```lua
+    AimingTab:CreateConfigSystem("right")
+    ```
+    - This creates a configuration system for the tab that likely saves the settings of the UI and applies them when the user reopens the script. The `"right"` argument may control the position of the config system (e.g., to the right side of the tab).
+
+Each of these parts is used to create a customizable UI with interactive elements like toggles, buttons, sliders, textboxes, dropdowns, and more.
