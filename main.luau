@@ -199,9 +199,9 @@ Library.ShowToggleFrameInKeybinds = true
 local Window = Library:CreateWindow({
 	
 
-	Title = "Foundation Hub",
-	Footer = "made by @wicked",
-	Icon = 117293507901367,
+	Title = "Foundation",
+	Footer = "made by coolmanyesyes6",
+	Icon = 0,
 	NotifySide = "Right",
 	ShowCustomCursor = false
 
