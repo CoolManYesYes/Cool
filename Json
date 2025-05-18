@@ -1,0 +1,23 @@
+{
+  "keywords": ["function", "local", "return", "if", "then", "else", "elseif", "end", "while", "for", "do", "repeat", "until", "break", "true", "false", "nil", "not", "and", "or"],
+  "strings": {
+    "pattern": "\"(.-)\"|'(.-)'",
+    "color": "#CE9178"
+  },
+  "comments": {
+    "pattern": "--.*",
+    "color": "#6A9955"
+  },
+  "numbers": {
+    "pattern": "\\b[0-9]+\\b",
+    "color": "#B5CEA8"
+  },
+  "functions": {
+    "pattern": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+    "color": "#569CD6"
+  },
+  "operators": {
+    "pattern": "[+\\-*/%^#=~<>.,:;{}()[\\]]",
+    "color": "#D4D4D4"
+  }
+}
