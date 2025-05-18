@@ -1,0 +1,32 @@
+{
+  "name": "InfiniteYield",
+  "version": "5.0",
+  "commands": [
+    {
+      "name": "fly",
+      "description": "Enables flying mode",
+      "usage": "fly [on/off]",
+      "aliases": ["flight"]
+    },
+    {
+      "name": "noclip",
+      "description": "Toggle noclip mode to walk through walls",
+      "usage": "noclip [on/off]"
+    },
+    {
+      "name": "kill",
+      "description": "Kills the targeted player",
+      "usage": "kill <player_name>"
+    },
+    {
+      "name": "bring",
+      "description": "Bring a player to your location",
+      "usage": "bring <player_name>"
+    }
+  ],
+  "settings": {
+    "uiPosition": "bottomRight",
+    "autoUpdate": true,
+    "maxCommands": 50
+  }
+}
